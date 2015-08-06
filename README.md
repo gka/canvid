@@ -6,7 +6,7 @@
   Because you can't embed and autoplay HTML5 videos on iOS! Yeah, that sucks.
 
 * **Why is this better than using an animated GIF?**  
-  Videos look kind of gross when converted to animated GIFs because of the colors sampling. Also the file size of video GIFs can get pretty huge. GIF is just not made for videos. JPGs do a much better job in compressing video. Also, animated GIFs don't give you any playback controls.
+  Videos look kind of gross when converted to animated GIFs because of the colors sampling. Also the file size of video GIFs can get pretty huge. GIF is just not made for videos. JPG does a much better job of compressing video frames. Also, animated GIFs don't give you any playback controls. You can't pause a GIF or delay it's playback. With canvid you can do that.
 
 * **Why only "relatively short" videos?**  
   As you see further down, the container format for canvid is a big image sprite of all the frames of each clip. Sadly, iOS limits the maximum image size (bigger image get sampled down), so that puts a limit on the maximum frames you can store.
