@@ -16,7 +16,7 @@
 ```js
 var canvid = $('#my-video-div').canvid({
     videos: {
-        clip1: { src: 'clip1.jpg', frames: 38, cols: 6, frameWidth: 400, frameHeight: 200 },
+        clip1: { src: 'clip1.jpg', frames: 38, cols: 6 },
         clip2: { src: 'clip2.jpg', frames: 43, cols: 6 }
     },
     width: 500,
@@ -28,8 +28,6 @@ var canvid = $('#my-video-div').canvid({
     }
 });
 ```
-If your container has different dimensions than your frames, you need to define the `frameWidth` and `frameHeight` options of the clip. When you don't define a `frameWidth` or `frameHeight` for a clip, we use the `width` and `height` options.
- 
 
 ## How to convert your video to JPG
 

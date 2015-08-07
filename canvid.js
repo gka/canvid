@@ -41,8 +41,8 @@
 
                     var img = images[key],
                         opts = _opts.videos[key],
-                        frameWidth = opts.frameWidth || _opts.width,
-                        frameHeight = opts.frameHeight || _opts.height;
+                        frameWidth = img.width / opts.cols,
+                        frameHeight = img.height / Math.ceil(opts.frames/ opts.cols);
 
                     var curFrame = reverse ? opts.frames-1 : 0,
                         wait = 0,
@@ -126,6 +126,8 @@
             return !!(elem.getContext && elem.getContext('2d'));
         }
         
+
         return control;
     };
+
 });
