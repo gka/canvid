@@ -44,5 +44,7 @@ Then, use ImageMagicks [montage](http://www.imagemagick.org/script/montage.php) 
 montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg
 ```
 
+## Contributors
 
-
+* [Gregor Aisch](http://driven-by-data.net)
+* [Moritz Klack](http://moritzklack.com)
