@@ -3,7 +3,7 @@
   if (typeof module !== 'undefined' && module.exports){ 
     module.exports = factory(require('jquery'), require('queue-async'));
   // AMD module
-  } else if ( typeof define === 'function' && define.amd ) { 
+  } else if (typeof define === 'function' && define.amd) { 
     define(['jquery', 'queue'], factory);
   // Browser globals
   } else {
@@ -94,7 +94,7 @@
             }); // end awaitAll
            
         } else if (opts.srcGif) {
-            el.append('<img src="'+opts['src-gif']+'" />');
+            el.append('<img src="' + opts.srcGif + '"/>');
         }
 
         function loadImage(key, url, callback) {
