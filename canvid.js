@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'queue'], function($, _, queue) {
+define(['jquery', 'queue'], function($, queue) {
 
     $.fn.canvid = function(_opts) {
         var el = $(this),
@@ -13,8 +13,9 @@ define(['jquery', 'underscore', 'queue'], function($, _, queue) {
         if (hasCanvas()) {  
             // preload videos images
             var q = queue(4);
-
-            _.each(_opts.videos, function(video, key) {
+            
+            for(var key in _opts.videos){
+                var video = _opts.videos[key];
                 q.defer(loadImage, key, video.src);
             });
 
