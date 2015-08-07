@@ -40,7 +40,9 @@
                     if (control.pause) control.pause(); // pause current vid
 
                     var img = images[key],
-                        opts = _opts.videos[key];
+                        opts = _opts.videos[key],
+                        frameWidth = opts.frameWidth || _opts.width,
+                        frameHeight = opts.frameHeight || _opts.height;
 
                     var curFrame = reverse ? opts.frames-1 : 0,
                         wait = 0,
@@ -79,10 +81,10 @@
                     }
 
                     function drawFrame(f) {
-                        var fx = Math.floor(f % opts.cols) * _opts.width,
-                            fy = Math.floor(f / opts.cols) * _opts.height;
+                        var fx = Math.floor(f % opts.cols) * frameWidth,
+                            fy = Math.floor(f / opts.cols) * frameHeight;
                         ctx.clearRect(0, 0, _opts.width, _opts.height); // clear frame
-                        ctx.drawImage(img, fx, fy, _opts.width, _opts.height, 0,0, _opts.width, _opts.height);     
+                        ctx.drawImage(img, fx, fy, frameWidth, frameHeight, 0,0, _opts.width, _opts.height);     
                     }
 
                 }; // end control.play
@@ -124,8 +126,6 @@
             return !!(elem.getContext && elem.getContext('2d'));
         }
         
-
         return control;
     };
-
 });
