@@ -1,0 +1,34 @@
+{
+  "name": "canvid",
+  "version": "1.0.0",
+  "description": "canvid is a tiny library for playback of relatively short videos on canvas elements.",
+  "main": "canvid.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gka/canvid.git"
+  },
+  "keywords": [
+    "canvas",
+    "video",
+    "gif"
+  ],
+  "author": "Gregor Aisch",
+  "contributors" : [{
+      "name" : "Gregor Aisch",
+      "web" : "http://driven-by-data.net"
+    },{
+      "name" : "Moritz Klack",
+      "web" : "http://moritzklack.com"
+  }],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gka/canvid/issues"
+  },
+  "homepage": "https://github.com/gka/canvid",
+  "dependencies": {
+    "queue-async": "^1.0.7"
+  }
+}
