@@ -1,4 +1,17 @@
-define(['jquery', 'queue'], function($, queue) {
+(function (factory){
+  // CommonJS Module
+  if (typeof module !== 'undefined' && module.exports){ 
+    module.exports = factory(require('jquery'), require('queue-async'));
+  // AMD module
+  } else if ( typeof define === 'function' && define.amd ) { 
+    define(['jquery', 'queue'], factory);
+  // Browser globals
+  } else {
+    factory(jQuery, queue)
+  }
+})(function ($, queue) {
+
+    console.log(queue)
 
     $.fn.canvid = function(_opts) {
         var el = $(this),
@@ -13,11 +26,11 @@ define(['jquery', 'queue'], function($, queue) {
         if (hasCanvas()) {  
             // preload videos images
             var q = queue(4);
-            
+
             for(var key in _opts.videos){
                 var video = _opts.videos[key];
                 q.defer(loadImage, key, video.src);
-            };
+            }
 
             q.awaitAll(function(err) {
                 if (err) return console.warn('error while loading video sources', err);
@@ -96,7 +109,7 @@ define(['jquery', 'queue'], function($, queue) {
                 .attr('class', 'canvid')
                 .attr('height', _opts.height)
                 .appendTo(el);
-            return canvas.get(0).getContext("2d");
+            return canvas.get(0).getContext('2d');
         }
 
         function reqAnimFrame() {
