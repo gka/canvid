@@ -14,7 +14,8 @@
 ## Usage
 
 ```js
-var canvid = $('#my-video-div').canvid({
+var canvidControl = canvid({
+    selector : '.video',
     videos: {
         clip1: { src: 'clip1.jpg', frames: 38, cols: 6 },
         clip2: { src: 'clip2.jpg', frames: 43, cols: 6 }
@@ -22,9 +23,9 @@ var canvid = $('#my-video-div').canvid({
     width: 500,
     height: 400,
     loaded: function() {
-        canvid.play('clip1');
+        canvidControl.play('clip1');
         // reverse playback
-        // canvid.play('clip1', true);
+        // canvidControl.play('clip1', true);
     }
 });
 ```
