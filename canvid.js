@@ -10,7 +10,7 @@ define(['jquery', 'underscore', 'queue'], function($, _, queue) {
 
         _opts = $.extend(el.data(), _opts || {});
 
-        if (testCanvas()) {  
+        if (hasCanvas()) {  
             // preload videos images
             var q = queue(4);
 
