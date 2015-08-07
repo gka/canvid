@@ -17,7 +17,7 @@ define(['jquery', 'queue'], function($, queue) {
             for(var key in _opts.videos){
                 var video = _opts.videos[key];
                 q.defer(loadImage, key, video.src);
-            });
+            };
 
             q.awaitAll(function(err) {
                 if (err) return console.warn('error while loading video sources', err);
