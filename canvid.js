@@ -11,8 +11,6 @@
   }
 })(function ($, queue) {
 
-    console.log(queue)
-
     $.fn.canvid = function(_opts) {
         var el = $(this),
             images = {},
