@@ -11,7 +11,24 @@
 * **Why only "relatively short" videos?**  
   As you see further down, the container format for canvid is a big image sprite of all the frames of each clip. Sadly, iOS limits the maximum image size (bigger image get sampled down), so that puts a limit on the maximum frames you can store.
 
+## Installation
+
+**npm**
+
+```
+$ npm install --save canvid
+```
+
+**git clone**
+
+```
+$ git clone git@github.com:gka/canvid.git
+```
+
 ## Usage
+
+Canvid supports AMD, CommonJS and browser globals. 
+If you are using browser globals, you also need to embed the **[queue dependency](https://github.com/mbostock/queue)** before loading canvid.
 
 ```js
 var canvidControl = canvid({
@@ -79,21 +96,21 @@ var canvidControl = canvid(canvidOptions);
 Plays video of the passed videoKey. Set the second parameter to `true`, if you want to play the video reversely.
 
 ```js
-canvidControl.play(videoKey [,isReverse])
+canvidControl.play(videoKey [,isReverse]);
 ```
 
 **pause**  
 Pause current video.
 
 ```js
-canvidControl.pause()
+canvidControl.pause();
 ```
 
 **resume**  
 Resume current video.
 
 ```js
-canvidControl.resume()
+canvidControl.resume();
 ```
 
 
