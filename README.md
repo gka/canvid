@@ -18,7 +18,7 @@ var canvidControl = canvid({
     selector : '.video',
     videos: {
         clip1: { src: 'clip1.jpg', frames: 38, cols: 6 },
-        clip2: { src: 'clip2.jpg', frames: 43, cols: 6 }
+        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3 }
     },
     width: 500,
     height: 400,
@@ -30,7 +30,74 @@ var canvidControl = canvid({
 });
 ```
 
-## How to convert your video to JPG
+## Canvid Options
+
+* **videos** required  
+  Video/Sprite objects (videoKey : videoOptions).
+
+  * **src** required  
+    Path of the sprite image.
+  
+  * **frames** required  
+    Number of frames. 
+ 
+  * **cols** required  
+    Number of columns.  
+
+  * **loops** optional  
+    Number of loops.
+
+
+* **selector** optional  
+  The selector of the element where the video gets displayed.  
+  `default: '.canvid-wrapper'`
+
+* **width** optional  
+  Width of the element where the video gets displayed.  
+  `default: 800`
+
+* **height** optional  
+  Height of the element where the video gets displayed.  
+  `default: 800`
+
+* **loaded** optional  
+  Function that gets called when all videos are loaded.
+
+* **srcGif** optional  
+  Path of the fallback gif, if canvas is not supported.  
+
+
+## Canvid Methods
+
+The canvid function returns an object to control the video:
+
+```js
+var canvidControl = canvid(canvidOptions);
+```
+
+**play**  
+Plays video of the passed videoKey. Set the second parameter to `true`, if you want to play the video reversely.
+
+```js
+canvidControl.play(videoKey [,isReverse])
+```
+
+**pause**  
+Pause current video.
+
+```js
+canvidControl.pause()
+```
+
+**resume**  
+Resume current video.
+
+```js
+canvidControl.resume()
+```
+
+
+## How to convert your video to a JPG sprite
 
 First, convert you video into single frames using [ffmpeg](https://www.ffmpeg.org/):
 

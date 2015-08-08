@@ -12,7 +12,7 @@
         var defaultOptions = {
                 width : 800,
                 height : 450,
-                selector: 'canvid-wrapper'
+                selector: '.canvid-wrapper'
             }
             images = {},
             firstPlay = true,
@@ -29,7 +29,7 @@
         }
 
         if (hasCanvas()) {
-            // preload videos images
+            // preload images
             var q = queue(4);
 
             for (var key in _opts.videos) {
