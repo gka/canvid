@@ -47,7 +47,7 @@ var canvidControl = canvid({
 });
 ```
 
-## Canvid Options
+## Options
 
 * **videos** required  
   Video/Sprite objects (videoKey : videoOptions).
@@ -84,7 +84,7 @@ var canvidControl = canvid({
   Path of the fallback gif, if canvas is not supported.  
 
 
-## Canvid Methods
+## Methods
 
 The canvid function returns an object to control the video:
 
