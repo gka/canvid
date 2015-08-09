@@ -74,7 +74,7 @@ var canvidControl = canvid({
 
 * **height** optional  
   Height of the element where the video gets displayed.  
-  `default: 800`
+  `default: 450`
 
 * **loaded** optional  
   Function that gets called when all videos are loaded.
