@@ -1,6 +1,6 @@
 # canvid.js
 
-**canvid** is a tiny library for playback of relatively short videos on canvas elements. 
+**canvid** is a tiny dependency free library for playback of relatively short videos on canvas elements. 
 
 * **Why not just use HTML5 video?**  
   Because you can't embed and autoplay HTML5 videos on iOS! Yeah, that sucks.
@@ -27,8 +27,7 @@ $ git clone git@github.com:gka/canvid.git
 
 ## Usage
 
-Canvid supports AMD, CommonJS and browser globals. 
-If you are using browser globals, you also need to embed the **[queue dependency](https://github.com/mbostock/queue)** before loading canvid.
+You can use canvid.js with AMD, CommonJS and browser globals.
 
 ```js
 var canvidControl = canvid({

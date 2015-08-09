@@ -1,44 +1,40 @@
 (function(root, factory) {
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('queue-async'));
+        module.exports = factory();
     } else if (typeof define === 'function' && define.amd) {
-        define(['queue'], factory);
+        define([], factory);
     } else {
-        root.canvid = factory(root.queue);
+        root.canvid = factory();
     }
-}(this, function(queue) {
+}(this, function() {
 
     function canvid(params) {
         var defaultOptions = {
                 width : 800,
                 height : 450,
                 selector: '.canvid-wrapper'
-            }
-            images = {},
+            },
             firstPlay = true,
             control = {
                 play: function() {
-                    console.log('cannot play before images are loaded');
+                    console.log('Cannot play before images are loaded');
                 }
             },
             _opts = merge(defaultOptions, params),
             el = document.querySelector(_opts.selector);
         
-        if(!el){
+        if (!el) {
             return console.warn('Error. No element found for selector', _opts.selector);
         }
 
+        if (!_opts.videos) {
+            return console.warn('Error. You need to define at least one video object');
+        }
+
         if (hasCanvas()) {
-            // preload images
-            var q = queue(4);
 
-            for (var key in _opts.videos) {
-                var video = _opts.videos[key];
-                q.defer(loadImage, key, video.src);
-            }
-
-            q.awaitAll(function(err) {
-                if (err) return console.warn('error while loading video sources', err);
+            loadImages(_opts.videos, function(err, images) {
+                if (err) return console.warn('Error while loading video sources.', err);
 
                 var ctx = initCanvas(),
                     requestAnimationFrame = reqAnimFrame();
@@ -79,7 +75,7 @@
                             drawFrame(curFrame);
                             curFrame = (+curFrame + (reverse ? -1 : 1));
                             if (curFrame < 0) curFrame += +opts.frames;
-                            if (curFrame >= opts.frames) curFrame -= opts.frames;
+                            if (curFrame >= opts.frames) curFrame = 0;
                             if (reverse ? curFrame == opts.frames - 1 : !curFrame) loops++;
                             if (opts.loops && loops >= opts.loops) playing = false;
                         }
@@ -97,11 +93,11 @@
 
                 }; // end control.play
 
-                if (isFunction(_opts.loaded)){
+                if (isFunction(_opts.loaded)) {
                     _opts.loaded(control);
                 }
 
-            }); // end awaitAll
+            }); // end loadImages
 
         } else if (opts.srcGif) {
             var fallbackImage = new Image();
@@ -110,10 +106,27 @@
             el.appendChild(fallbackImage);
         }
 
-        function loadImage(key, url, callback) {
-            var img = images[key] = new Image();
-            img.onload = function() { callback(null); };
-            img.src = url;
+        function loadImages(imageList, callback) {
+            var images = {},
+                imagesToLoad = Object.keys(imageList).length;
+            
+            if(imagesToLoad === 0) {
+                return callback('You need to define at least one video object.'); 
+            }
+              
+            for (var key in imageList) {
+                images[key] = new Image();
+                images[key].onload = checkCallback;
+                images[key].onerror = callback;
+                images[key].src = imageList[key].src;
+            }
+
+            function checkCallback() {
+                imagesToLoad--;
+                if (imagesToLoad === 0) {
+                    callback(null, images);
+                }
+            }
         }
 
         function initCanvas() {
@@ -127,7 +140,7 @@
             return canvas.getContext('2d');
         }
 
-        function hideChildren(){
+        function hideChildren() {
             var children = [].slice.call(el.children);
 
             children.forEach(function(child){
@@ -159,7 +172,8 @@
         }
 
         function merge() {
-            var obj = {}, key;
+            var obj = {}, 
+                key;
 
             for (var i = 0; i < arguments.length; i++) {
                 for (key in arguments[i]) {
@@ -168,7 +182,6 @@
                     }
                 }
             }
-
             return obj;
         }
 
