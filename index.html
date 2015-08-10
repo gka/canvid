@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>canvid.js by gka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">canvid.js</h1>
+      <h2 class="project-tagline">tiny js library for playing video on canvas elements</h2>
+      <a href="https://github.com/gka/canvid" class="btn">View on GitHub</a>
+      <a href="https://github.com/gka/canvid/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/gka/canvid/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="canvidjs" class="anchor" href="#canvidjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>canvid.js</h1>
+
+<p><strong>canvid</strong> is a tiny dependency free library for playback of relatively short videos on canvas elements. </p>
+
+<ul>
+<li><p><strong>Why not just use HTML5 video?</strong><br>
+Because you can't embed and autoplay HTML5 videos on iOS! Yeah, that sucks.</p></li>
+<li><p><strong>Why is this better than using an animated GIF?</strong><br>
+Videos look kind of gross when converted to animated GIFs because of the colors sampling. Also the file size of video GIFs can get pretty huge. GIF is just not made for videos. JPG does a much better job of compressing video frames. Also, animated GIFs don't give you any playback controls. You can't pause a GIF or delay it's playback. With canvid you can do that.</p></li>
+<li><p><strong>Why only "relatively short" videos?</strong><br>
+As you see further down, the container format for canvid is a big image sprite of all the frames of each clip. Sadly, iOS limits the maximum image size (bigger image get sampled down), so that puts a limit on the maximum frames you can store.</p></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p><strong>npm</strong></p>
+
+<pre><code>$ npm install --save canvid
+</code></pre>
+
+<p><strong>git clone</strong></p>
+
+<pre><code>$ git clone git@github.com:gka/canvid.git
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>You can use canvid.js with AMD, CommonJS and browser globals.</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> canvidControl <span class="pl-k">=</span> canvid({
+    selector <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>.video<span class="pl-pds">'</span></span>,
+    videos<span class="pl-k">:</span> {
+        clip1<span class="pl-k">:</span> { src<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>clip1.jpg<span class="pl-pds">'</span></span>, frames<span class="pl-k">:</span> <span class="pl-c1">38</span>, cols<span class="pl-k">:</span> <span class="pl-c1">6</span> },
+        clip2<span class="pl-k">:</span> { src<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>clip2.jpg<span class="pl-pds">'</span></span>, frames<span class="pl-k">:</span> <span class="pl-c1">43</span>, cols<span class="pl-k">:</span> <span class="pl-c1">6</span>, loops<span class="pl-k">:</span> <span class="pl-c1">3</span> }
+    },
+    width<span class="pl-k">:</span> <span class="pl-c1">500</span>,
+    height<span class="pl-k">:</span> <span class="pl-c1">400</span>,
+    <span class="pl-en">loaded</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
+        canvidControl.play(<span class="pl-s"><span class="pl-pds">'</span>clip1<span class="pl-pds">'</span></span>);
+        <span class="pl-c">// reverse playback</span>
+        <span class="pl-c">// canvidControl.play('clip1', true);</span>
+    }
+});</pre></div>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<ul>
+<li>
+<p><strong>videos</strong> required<br>
+Video/Sprite objects (videoKey : videoOptions).</p>
+
+<ul>
+<li><p><strong>src</strong> required<br>
+Path of the sprite image.</p></li>
+<li><p><strong>frames</strong> required<br>
+Number of frames. </p></li>
+<li><p><strong>cols</strong> required<br>
+Number of columns.  </p></li>
+<li><p><strong>loops</strong> optional<br>
+Number of loops.</p></li>
+</ul>
+</li>
+<li><p><strong>selector</strong> optional<br>
+The selector of the element where the video gets displayed.<br>
+<code>default: '.canvid-wrapper'</code></p></li>
+<li><p><strong>width</strong> optional<br>
+Width of the element where the video gets displayed.<br>
+<code>default: 800</code></p></li>
+<li><p><strong>height</strong> optional<br>
+Height of the element where the video gets displayed.<br>
+<code>default: 450</code></p></li>
+<li><p><strong>loaded</strong> optional<br>
+Function that gets called when all videos are loaded.</p></li>
+<li><p><strong>srcGif</strong> optional<br>
+Path of the fallback gif, if canvas is not supported.  </p></li>
+</ul>
+
+<h2>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+
+<p>The canvid function returns an object to control the video:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> canvidControl <span class="pl-k">=</span> canvid(canvidOptions);</pre></div>
+
+<p><strong>play</strong><br>
+Plays video of the passed videoKey. Set the second parameter to <code>true</code>, if you want to play the video reversely.</p>
+
+<div class="highlight highlight-js"><pre>canvidControl.play(videoKey [,isReverse]);</pre></div>
+
+<p><strong>pause</strong><br>
+Pause current video.</p>
+
+<div class="highlight highlight-js"><pre>canvidControl.pause();</pre></div>
+
+<p><strong>resume</strong><br>
+Resume current video.</p>
+
+<div class="highlight highlight-js"><pre>canvidControl.resume();</pre></div>
+
+<h2>
+<a id="how-to-convert-your-video-to-a-jpg-sprite" class="anchor" href="#how-to-convert-your-video-to-a-jpg-sprite" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to convert your video to a JPG sprite</h2>
+
+<p>First, convert you video into single frames using <a href="https://www.ffmpeg.org/">ffmpeg</a>:</p>
+
+<pre><code>ffmpeg -i myvideo.mp4 -vf scale=375:-1 -r 5 frames/%04d.png
+</code></pre>
+
+<p>Then, use ImageMagicks <a href="http://www.imagemagick.org/script/montage.php">montage</a> to stich all the frames into one big image:</p>
+
+<pre><code>montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg
+</code></pre>
+
+<h2>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors</h2>
+
+<ul>
+<li><a href="http://driven-by-data.net">Gregor Aisch</a></li>
+<li><a href="http://moritzklack.com">Moritz Klack</a></li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/gka/canvid">canvid.js</a> is maintained by <a href="https://github.com/gka">gka</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
