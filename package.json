@@ -23,7 +23,7 @@
       "name" : "Moritz Klack",
       "web" : "http://moritzklack.com"
   }],
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/gka/canvid/issues"
   },
