@@ -11,6 +11,9 @@
 * **Why only "relatively short" videos?**  
   As you see further down, the container format for canvid is a big image sprite of all the frames of each clip. Sadly, iOS limits the maximum image size (bigger image get sampled down), so that puts a limit on the maximum frames you can store.
 
+* **Why is there no audio?**  
+  canvid doesn't support audio for the same reason animated GIF doesn't support audio either: because that's not what it was built for. 
+
 ## Installation
 
 **npm**
