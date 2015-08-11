@@ -6,7 +6,7 @@
 
     var isPlaying = false;
 
-    var playVid = function(isReverse) {
+    var playVid = function() {
         var isReverse = this.id !== 'play';
 
         canvidControl.play('canvidExample', isReverse);
