@@ -8,6 +8,17 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <style type="text/css">
+      #canvid-example{
+        text-align: center;
+      }
+      .canvid-buttons{
+        text-align: center;
+      }
+      .canvid-buttons button{
+        display:none;
+      }
+    </style>
   </head>
   <body>
     <section class="page-header">
@@ -32,6 +43,20 @@ Videos look kind of gross when converted to animated GIFs because of the colors 
 <li><p><strong>Why only "relatively short" videos?</strong><br>
 As you see further down, the container format for canvid is a big image sprite of all the frames of each clip. Sadly, iOS limits the maximum image size (bigger image get sampled down), so that puts a limit on the maximum frames you can store.</p></li>
 </ul>
+
+
+<h2>
+  <a id="installation" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo
+</h2>
+
+<div id="canvid-example"></div>
+
+<div class="canvid-buttons">
+  <button id="play">Play</button>
+  <button id="pause">Pause</button>
+</div>
+
+
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -151,6 +176,8 @@ Resume current video.</p>
 
     </section>
 
-  
+  <script src="scripts/canvid.js"></script>
+  <script src="scripts/example.js"></script>
+
   </body>
 </html>
