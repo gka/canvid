@@ -31,7 +31,7 @@
       <h1>
 <a id="canvidjs" class="anchor" href="#canvidjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>canvid.js</h1>
 
-<p><strong>canvid</strong> is a tiny dependency free library for playback of relatively short videos on canvas elements. </p>
+<p><strong>canvid</strong> is a tiny dependency free library for playback of relatively short videos on canvas elements.</p>
 
 <ul>
 <li><p><strong>Why not just use HTML5 video?</strong><br>
@@ -40,6 +40,8 @@ Because you can't embed and autoplay HTML5 videos on iOS! Yeah, that sucks.</p><
 Videos look kind of gross when converted to animated GIFs because of the colors sampling. Also the file size of video GIFs can get pretty huge. GIF is just not made for videos. JPG does a much better job of compressing video frames. Also, animated GIFs don't give you any playback controls. You can't pause a GIF or delay it's playback. With canvid you can do that.</p></li>
 <li><p><strong>Why only "relatively short" videos?</strong><br>
 As you see further down, the container format for canvid is a big image sprite of all the frames of each clip. Sadly, iOS limits the maximum image size (bigger image get sampled down), so that puts a limit on the maximum frames you can store.</p></li>
+<li><p><strong>Why is there no audio?</strong><br>
+canvid doesn't support audio for the same reason animated GIF doesn't support audio either: because that's not what it was built for.</p></li>
 </ul>
 
 
@@ -47,7 +49,7 @@ As you see further down, the container format for canvid is a big image sprite o
   <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo
 </h2>
 
-<p>We created the sprite for this demo with the tools <a href="#how-to-convert-your-video-to-a-jpg-sprite">descriped below</a>. The <a href="images/canvid-example.jpg">sprite</a> has about <strong>700kb</strong></p>
+<p>We created the sprite for this demo with the tools <a href="#how-to-convert-your-video-to-a-jpg-sprite">descriped below</a>. The <a href="images/canvid-example.jpg">sprite</a> has about <strong>700kb</strong>.</p>
 
 
 <div id="canvid-example"></div>
