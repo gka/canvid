@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <title>canvid.js by gka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="styles/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="styles/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="styles/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="styles/prism.css" media="screen">
     <style type="text/css">
     .canvid-buttons button {
         display: none;
@@ -69,35 +70,47 @@
         <p>These are the same frames converted to a GIF. The GIF has about <strong>4.9mb</strong>.</p>
         <img class="frames-gif" src="images/frames.gif" />
         <p>The GIF was created with these commands:</p>
-        <pre><code>ffmpeg -i myvideo.mp4 -vf scale=375:-1 -r 5 frames/%04d.png
-</code><code>convert -loop 0 -delay 5 -colors 75 frames/*.png -fuzz "40%" output.gif</code></pre>
+        <pre><code class="language-bash">ffmpeg -i myvideo.mp4 -vf scale=375:-1 -r 5 frames/%04d.png
+convert -loop 0 -delay 5 -colors 75 frames/*.png -fuzz "40%" output.gif</code></pre>
+        
         <h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+            <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation
+        </h2>
+
         <p><strong>npm</strong></p>
-        <pre><code>$ npm install --save canvid
-</code></pre>
+        <pre><code class="language-bash">npm install --save canvid</code></pre>
+        
         <p><strong>git clone</strong></p>
-        <pre><code>$ git clone git@github.com:gka/canvid.git
-</code></pre>
+        <pre><code class="language-bash">git clone git@github.com:gka/canvid.git</code></pre>
+        
         <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+            <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage
+        </h2>
         <p>You can use canvid.js with AMD, CommonJS and browser globals.</p>
-        <div class="highlight highlight-js"><pre><span class="pl-k">var</span> canvidControl <span class="pl-k">=</span> canvid({
-    selector <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>.video<span class="pl-pds">'</span></span>,
-    videos<span class="pl-k">:</span> {
-        clip1<span class="pl-k">:</span> { src<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>clip1.jpg<span class="pl-pds">'</span></span>, frames<span class="pl-k">:</span> <span class="pl-c1">38</span>, cols<span class="pl-k">:</span> <span class="pl-c1">6</span> },
-        clip2<span class="pl-k">:</span> { src<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>clip2.jpg<span class="pl-pds">'</span></span>, frames<span class="pl-k">:</span> <span class="pl-c1">43</span>, cols<span class="pl-k">:</span> <span class="pl-c1">6</span>, loops<span class="pl-k">:</span> <span class="pl-c1">3</span> }
+
+        <pre ><code class="language-javascript">
+var canvidControl = canvid({
+    selector : '.video',
+    videos: {
+        clip1: { src: 'clip1.jpg', frames: 38, cols: 6 },
+        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3 }
     },
-    width<span class="pl-k">:</span> <span class="pl-c1">500</span>,
-    height<span class="pl-k">:</span> <span class="pl-c1">400</span>,
-    <span class="pl-en">loaded</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
-        canvidControl.play(<span class="pl-s"><span class="pl-pds">'</span>clip1<span class="pl-pds">'</span></span>);
-        <span class="pl-c">// reverse playback</span>
-        <span class="pl-c">// canvidControl.play('clip1', true);</span>
+    width: 500,
+    height: 400,
+    loaded: function() {
+        canvidControl.play('clip1');
+        // reverse playback
+        // canvidControl.play('clip1', true);
     }
-});</pre></div>
+});</code>
+        </pre>
+
+
+
         <h2>
-<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+            <a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options
+        </h2>
+
         <ul>
             <li>
                 <p><strong>videos</strong> required
@@ -125,19 +138,19 @@
                 <p><strong>selector</strong> optional
                     <br> The selector of the element where the video gets displayed.
                     <br>
-                    <code>default: '.canvid-wrapper'</code></p>
+                    default: '.canvid-wrapper'</p>
             </li>
             <li>
                 <p><strong>width</strong> optional
                     <br> Width of the element where the video gets displayed.
                     <br>
-                    <code>default: 800</code></p>
+                    default: 800</p>
             </li>
             <li>
                 <p><strong>height</strong> optional
                     <br> Height of the element where the video gets displayed.
                     <br>
-                    <code>default: 450</code></p>
+                    default: 450</p>
             </li>
             <li>
                 <p><strong>loaded</strong> optional
@@ -149,33 +162,50 @@
             </li>
         </ul>
         <h2>
-<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+            <a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods
+        </h2>
         <p>The canvid function returns an object to control the video:</p>
-        <div class="highlight highlight-js"><pre><span class="pl-k">var</span> canvidControl <span class="pl-k">=</span> canvid(canvidOptions);</pre></div>
+
+        
+        <pre><code class="language-javascript">var canvidControl = canvid(canvidOptions);</code></pre>
+        
+        
         <p><strong>play</strong>
-            <br> Plays video of the passed videoKey. Set the second parameter to <code>true</code>, if you want to play the video reversely.</p>
-        <div class="highlight highlight-js"><pre>canvidControl.play(videoKey [,isReverse]);</pre></div>
+        <br> Plays video of the passed videoKey. Set the second parameter to <code>true</code>, if you want to play the video reversely.</p>
+        
+        <pre><code class="language-javascript">canvidControl.play(videoKey [,isReverse]);</code></pre>
         <p><strong>pause</strong>
-            <br> Pause current video.</p>
-        <div class="highlight highlight-js"><pre>canvidControl.pause();</pre></div>
+        <br> Pause current video.</p>
+        
+        <pre><code class="language-javascript">canvidControl.pause();</code></pre>
+        
         <p><strong>resume</strong>
-            <br> Resume current video.</p>
-        <div class="highlight highlight-js"><pre>canvidControl.resume();</pre></div>
+        <br> Resume current video.</p>
+        <pre><code class="language-javascript">canvidControl.resume();</code></pre>
         <h2>
-<a id="how-to-convert-your-video-to-a-jpg-sprite" class="anchor" href="#how-to-convert-your-video-to-a-jpg-sprite" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to convert your video to a JPG sprite</h2>
+            <a id="how-to-convert-your-video-to-a-jpg-sprite" class="anchor" href="#how-to-convert-your-video-to-a-jpg-sprite" aria-hidden="true">
+                <span class="octicon octicon-link"></span></a>How to convert your video to a JPG sprite
+            </h2>
         <p>First, convert you video into single frames using <a href="https://www.ffmpeg.org/">ffmpeg</a>:</p>
-        <pre><code>ffmpeg -i myvideo.mp4 -vf scale=375:-1 -r 5 frames/%04d.png
-</code></pre>
+        
+        <pre><code class="language-bash">ffmpeg -i myvideo.mp4 -vf scale=375:-1 -r 5 frames/%04d.png</code></pre>
+
         <p>Then, use ImageMagicks <a href="http://www.imagemagick.org/script/montage.php">montage</a> to stich all the frames into one big image:</p>
-        <pre><code>montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg
-</code></pre>
+        
+        <pre><code class="language-bash">montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg</code></pre>
+        
         <h2>
-<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors</h2>
+            <a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors
+        </h2>
+
         <ul>
             <li><a href="http://driven-by-data.net">Gregor Aisch</a></li>
             <li><a href="http://moritzklack.com">Moritz Klack</a></li>
         </ul>
+
     </section>
+
+    <script src="scripts/prism.js"></script>
     <script src="scripts/canvid.js"></script>
     <script src="scripts/example.js"></script>
 </body>

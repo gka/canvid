@@ -115,7 +115,7 @@ a {
   color: #159957; }
 .main-content p {
   margin-bottom: 1em; }
-.main-content code {
+/*.main-content code {
   padding: 2px 4px;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 0.9rem;
@@ -163,7 +163,7 @@ a {
   background-color: transparent;
   border: 0; }
   .main-content pre code:before, .main-content pre code:after, .main-content pre tt:before, .main-content pre tt:after {
-    content: normal; }
+    content: normal; }*/
 .main-content ul, .main-content ol {
   margin-top: 0; }
 .main-content blockquote {
