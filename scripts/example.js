@@ -8,6 +8,8 @@
 
   var playVid = function(){
     canvidControl.play('canvidExample');
+    pauseBtn.innerHTML = 'Pause';
+    isPlaying = true;
   };
 
   var pauseVid = function(){
@@ -24,6 +26,8 @@
 
   var reverseVid = function(){
     canvidControl.play('canvidExample', true);
+    pauseBtn.innerHTML = 'Pause';
+    isPlaying = true;
   };
 
   var canvidControl = canvid({
