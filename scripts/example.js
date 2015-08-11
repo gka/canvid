@@ -32,7 +32,7 @@
           canvidExample: { src: 'images/canvid-example.jpg', frames: 102, cols: 6 }
       },
       width: 500,
-      height: 400,
+      height: 375,
       loaded: function() {
           canvidControl.play('canvidExample');
           isPlaying = true;
