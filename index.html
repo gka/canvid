@@ -62,9 +62,10 @@
         <p>We created the sprite for this demo with the tools <a href="#how-to-convert-your-video-to-a-jpg-sprite">descriped below</a>. The <a href="images/canvid-example.jpg">sprite</a> has about <strong>700kb</strong>.</p>
         <div id="canvid-example"></div>
         <div class="canvid-buttons">
-            <button id="play">Play</button>
-            <button id="pause">Pause</button>
-            <button id="reverse">Reverse</button>
+            <button class="canvid-ctrl" id="play" data-fps="15">Play (15fps)</button>
+            <button class="canvid-ctrl" id="play60" data-fps="60">Play (60fps)</button>
+            <button class="canvid-ctrl" id="pause">Pause</button>
+            <button class="canvid-ctrl" id="reverse" data-fps="15">Reverse</button>
         </div>
         <h2>
   <a id="gif-comparison"  href="#gif-comparison" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>GIF Comparison
@@ -134,25 +135,23 @@ var canvidControl = canvid({
                         <p><strong>loops</strong> optional
                             <br> Number of loops.</p>
                     </li>
+                    <li>
+                        <p><strong>fps</strong> optional (default: 15)
+                            <br>Frames per second.</p>
+                    </li>
                 </ul>
             </li>
             <li>
-                <p><strong>selector</strong> optional
-                    <br> The selector of the element where the video gets displayed.
-                    <br>
-                    default: '.canvid-wrapper'</p>
+                <p><strong>selector</strong> optional (default: '.canvid-wrapper')
+                    <br> The selector of the element where the video gets displayed.</p>
             </li>
             <li>
-                <p><strong>width</strong> optional
-                    <br> Width of the element where the video gets displayed.
-                    <br>
-                    default: 800</p>
+                <p><strong>width</strong> optional (default: 800)
+                    <br> Width of the element where the video gets displayed.</p>
             </li>
             <li>
-                <p><strong>height</strong> optional
-                    <br> Height of the element where the video gets displayed.
-                    <br>
-                    default: 450</p>
+                <p><strong>height</strong> optional (default: 450)
+                    <br> Height of the element where the video gets displayed.</p>
             </li>
             <li>
                 <p><strong>loaded</strong> optional
@@ -173,11 +172,11 @@ var canvidControl = canvid({
         
         
         <p><strong>play</strong>
-        <br>Plays video of the passed videoKey. Set the second parameter to <code>true</code>, if you want to play the video reversely.</p>
+        <br>Plays video of the passed videoKey. The parameters isReverse (default: false) and fps (default: 15) are optional.</p>
         
-        <pre><code class="language-javascript">canvidControl.play(videoKey [,isReverse]);</code></pre>
+        <pre><code class="language-javascript">canvidControl.play(videoKey [,isReverse, fps]);</code></pre>
         <p><strong>pause</strong>
-        <br>Pause current video.</p>
+        <br>Pause current video. </p>
         
         <pre><code class="language-javascript">canvidControl.pause();</code></pre>
         

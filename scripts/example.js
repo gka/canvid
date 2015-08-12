@@ -1,13 +1,18 @@
 (function(window, document) {
 
     var playBtn = document.querySelector('#play');
+    var play60Btn = document.querySelector('#play60');
     var pauseBtn = document.querySelector('#pause');
     var reverseBtn = document.querySelector('#reverse');
+    
+    var canvidCtrl = document.querySelectorAll('.canvid-ctrl');
 
     var playVid = function() {
-        var isReverse = this.id === 'reverse';
 
-        canvidControl.play('canvidExample', isReverse);
+        var fps = this.getAttribute('data-fps'),
+            isReverse = this.id === 'reverse';
+
+        canvidControl.play('canvidExample', isReverse, fps);
         pauseBtn.innerHTML = 'Pause';
     };
 
@@ -35,13 +40,14 @@
         loaded: function() {
             canvidControl.play('canvidExample');
 
-            playBtn.style.display = 'inline-block';
-            pauseBtn.style.display = 'inline-block';
-            reverseBtn.style.display = 'inline-block';
+            [].forEach.call(canvidCtrl, function(ctrl, index){
+                ctrl.style.display = 'inline-block';
+            });
         }
     });
 
     playBtn.addEventListener('click', playVid);
+    play60Btn.addEventListener('click', playVid);
     pauseBtn.addEventListener('click', pauseVid);
     reverseBtn.addEventListener('click', playVid);
 
