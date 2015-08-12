@@ -65,6 +65,10 @@
                         requestAnimationFrame(frame);
                     };
 
+                    control.isPlaying = function() {
+                        return playing;
+                    };
+
                     if (firstPlay) {
                         firstPlay = false;
                         hideChildren();
