@@ -39,7 +39,7 @@
                 var ctx = initCanvas(),
                     requestAnimationFrame = reqAnimFrame();
 
-                control.play = function(key, reverse) {
+                control.play = function(key, reverse, fps) {
                     if (control.pause) control.pause(); // pause current vid
 
                     var img = images[key],
@@ -47,11 +47,12 @@
                         frameWidth = img.width / opts.cols,
                         frameHeight = img.height / Math.ceil(opts.frames / opts.cols);
 
-                    var curFrame = reverse ? opts.frames - 1 : 0,
+                    var curFps = fps || opts.fps || 15,
+                        curFrame = reverse ? opts.frames - 1 : 0,
                         wait = 0,
                         playing = true,
                         loops = 0,
-                        delay = 4;
+                        delay = 60 / curFps;
 
                     requestAnimationFrame(frame);
 
@@ -83,7 +84,7 @@
                             if (reverse ? curFrame == opts.frames - 1 : !curFrame) loops++;
                             if (opts.loops && loops >= opts.loops) playing = false;
                         }
-                        wait = (wait + 1) % ((reverse ? 0.5 : 1) * delay);
+                        wait = (wait + 1) % delay;
                         if (playing && opts.frames > 1) requestAnimationFrame(frame);
                     }
 

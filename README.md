@@ -66,6 +66,9 @@ var canvidControl = canvid({
   * **loops** optional  
     Number of loops.
 
+  * **fps** optional (default: 15)  
+    Frames per second
+
 
 * **selector** optional  
   The selector of the element where the video gets displayed.  
@@ -95,10 +98,10 @@ var canvidControl = canvid(canvidOptions);
 ```
 
 **play**  
-Plays video of the passed videoKey. Set the second parameter to `true`, if you want to play the video reversely.
+Plays video of the passed videoKey. The parameters isReverse (default: false) and fps (default: 15) are optional.
 
 ```js
-canvidControl.play(videoKey [,isReverse]);
+canvidControl.play(videoKey [,isReverse, fps]);
 ```
 
 **pause**  
