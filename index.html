@@ -173,17 +173,23 @@ var canvidControl = canvid({
         
         
         <p><strong>play</strong>
-        <br> Plays video of the passed videoKey. Set the second parameter to <code>true</code>, if you want to play the video reversely.</p>
+        <br>Plays video of the passed videoKey. Set the second parameter to <code>true</code>, if you want to play the video reversely.</p>
         
         <pre><code class="language-javascript">canvidControl.play(videoKey [,isReverse]);</code></pre>
         <p><strong>pause</strong>
-        <br> Pause current video.</p>
+        <br>Pause current video.</p>
         
         <pre><code class="language-javascript">canvidControl.pause();</code></pre>
         
         <p><strong>resume</strong>
-        <br> Resume current video.</p>
+        <br>Resume current video.</p>
         <pre><code class="language-javascript">canvidControl.resume();</code></pre>
+        
+        <p><strong>isPlaying</strong>
+        <br>Returns true or false whether the video is playing or not.</p>
+        <pre><code class="language-javascript">canvidControl.isPlaying();</code></pre>
+        
+
         <h2>
             <a id="how-to-convert-your-video-to-a-jpg-sprite" class="anchor" href="#how-to-convert-your-video-to-a-jpg-sprite" aria-hidden="true">
                 <span class="octicon octicon-link"></span></a>How to convert your video to a JPG sprite
