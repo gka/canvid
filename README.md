@@ -115,6 +115,12 @@ Resume current video.
 canvidControl.resume();
 ```
 
+**isPlaying**  
+Returns true or false whether the video is playing or not.
+
+```js
+canvidControl.isPlaying();
+```
 
 ## How to convert your video to a JPG sprite
 
