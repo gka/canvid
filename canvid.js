@@ -21,7 +21,7 @@
                 }
             },
             _opts = merge(defaultOptions, params),
-            el = document.querySelector(_opts.selector);
+            el = typeof _opts.selector === 'string' ? document.querySelector(_opts.selector) : _opts.selector;
         
         if (!el) {
             return console.warn('Error. No element found for selector', _opts.selector);

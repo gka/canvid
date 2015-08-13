@@ -37,7 +37,7 @@ var canvidControl = canvid({
     selector : '.video',
     videos: {
         clip1: { src: 'clip1.jpg', frames: 38, cols: 6 },
-        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3 }
+        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3, fps: 24 }
     },
     width: 500,
     height: 400,
@@ -67,11 +67,11 @@ var canvidControl = canvid({
     Number of loops.
 
   * **fps** optional (default: 15)  
-    Frames per second
+    Frames per second.
 
 
 * **selector** optional  
-  The selector of the element where the video gets displayed.  
+  The selector of the element where the video gets displayed. You can also pass a DOM element as a selector.
   `default: '.canvid-wrapper'`
 
 * **width** optional  
