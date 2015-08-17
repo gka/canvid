@@ -118,6 +118,13 @@ Resume current video.
 canvidControl.resume();
 ```
 
+**destroy**  
+Stops video and removes the canvas of the current canvid element from the DOM.
+
+```js
+canvidControl.destroy();
+```
+
 **isPlaying**  
 Returns true or false whether the video is playing or not.
 

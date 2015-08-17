@@ -70,6 +70,11 @@
                         return playing;
                     };
 
+                    control.destroy = function(){
+                        control.pause();
+                        removeCanvid();
+                    };
+
                     if (firstPlay) {
                         firstPlay = false;
                         hideChildren();
@@ -146,11 +151,17 @@
         }
 
         function hideChildren() {
-            var children = [].slice.call(el.children);
-
-            children.forEach(function(child){
-                if(!child.classList.contains('canvid')){
+            [].forEach.call(el.children, function(child){
+                if(!child.classList.contains('canvid') ){
                     child.style.display = 'none';
+                }
+            });
+        }
+
+        function removeCanvid(){
+            [].forEach.call(el.children, function(child){
+                if(child.classList.contains('canvid') ){
+                    el.removeChild(child);
                 }
             });
         }
