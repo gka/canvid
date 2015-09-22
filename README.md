@@ -136,7 +136,9 @@ canvidControl.isPlaying();
 
 First, convert you video into single frames using [ffmpeg](https://www.ffmpeg.org/):
 
+
 ```
+mkdir frames
 ffmpeg -i myvideo.mp4 -vf scale=375:-1 -r 5 frames/%04d.png
 ```
 
