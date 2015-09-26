@@ -184,7 +184,7 @@
 
         function isFunction(obj) {
             // taken from jQuery
-            return typeof obj === "function" || !!(obj && obj.constructor && obj.call && obj.apply);
+            return typeof obj === 'function' || !!(obj && obj.constructor && obj.call && obj.apply);
         }
 
         function merge() {
