@@ -136,7 +136,6 @@ canvidControl.isPlaying();
 
 First, convert you video into single frames using [ffmpeg](https://www.ffmpeg.org/):
 
-
 ```
 mkdir frames
 ffmpeg -i myvideo.mp4 -vf scale=375:-1 -r 5 frames/%04d.png
@@ -147,6 +146,10 @@ Then, use ImageMagicks [montage](http://www.imagemagick.org/script/montage.php) 
 ```
 montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg
 ```
+
+## Known Issues
+
+Some users encountered problems on mobile devices with large sprites. A workaround is to split the sprite into multiple sprites.
 
 ## Contributors
 
