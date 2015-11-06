@@ -71,8 +71,8 @@ var canvidControl = canvid({
   * **fps** optional (default: 15)  
     Frames per second.
 
-  * **onEnd** optional
-    Function that gets called when the clip ended
+  * **onEnd** optional  
+    Function that gets called when the clip ended.
 
 
 * **selector** optional  
@@ -145,7 +145,7 @@ canvidControl.getCurrentFrame();
 ```
 
 **setCurrentFrame**  
-Sets the current frame number
+Sets the current frame number.
 
 ```js
 canvidControl.setCurrentFrame(0);
