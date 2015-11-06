@@ -96,7 +96,9 @@ var canvidControl = canvid({
     selector : '.video',
     videos: {
         clip1: { src: 'clip1.jpg', frames: 38, cols: 6 },
-        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3 }
+        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3, onEnd: function(){
+          console.log('clip2 ended.')
+        }}
     },
     width: 500,
     height: 400,
@@ -138,6 +140,10 @@ var canvidControl = canvid({
                     <li>
                         <p><strong>fps</strong> optional (default: 15)
                             <br>Frames per second.</p>
+                    </li>
+                    <li>
+                        <p><strong>onEnd</strong> optional 
+                            <br>Function that gets called when the clip ended.</p>
                     </li>
                 </ul>
             </li>
@@ -191,6 +197,14 @@ var canvidControl = canvid({
         <p><strong>isPlaying</strong>
         <br>Returns true or false whether the video is playing or not.</p>
         <pre><code class="language-javascript">canvidControl.isPlaying();</code></pre>
+
+        <p><strong>getCurrentFrame</strong>
+        <br>Returns the current frame number.</p>
+        <pre><code class="language-javascript">canvidControl.getCurrentFrame();</code></pre>
+
+        <p><strong>setCurrentFrame</strong>
+        <br>Sets the current frame number.</p>
+        <pre><code class="language-javascript">canvidControl.setCurrentFrame(0);</code></pre>
         
 
         <h2>
