@@ -37,7 +37,9 @@ var canvidControl = canvid({
     selector : '.video',
     videos: {
         clip1: { src: 'clip1.jpg', frames: 38, cols: 6 },
-        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3, fps: 24 }
+        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3, fps: 24, onEnd: function(){
+          console.log('clip2 ended.')
+        }}
     },
     width: 500,
     height: 400,
@@ -68,6 +70,9 @@ var canvidControl = canvid({
 
   * **fps** optional (default: 15)  
     Frames per second.
+
+  * **onEnd** optional
+    Function that gets called when the clip ended
 
 
 * **selector** optional  
@@ -130,6 +135,20 @@ Returns true or false whether the video is playing or not.
 
 ```js
 canvidControl.isPlaying();
+```
+
+**getCurrentFrame**  
+Returns the current frame number.
+
+```js
+canvidControl.getCurrentFrame();
+```
+
+**setCurrentFrame**  
+Sets the current frame number
+
+```js
+canvidControl.setCurrentFrame(0);
 ```
 
 ## How to convert your video to a JPG sprite

@@ -75,6 +75,22 @@
                         removeCanvid();
                     };
 
+                    control.getCurrentFrame = function(){
+                        return curFrame;
+                    };
+
+                    control.setCurrentFrame = function(frameNumber){
+                        if(frameNumber < 0 || frameNumber >= opts.frames){
+                            return false;
+                        }
+
+                        if(!isPlaying){
+                            drawFrame(frameNumber);
+                        }        
+
+                        curFrame = frameNumber;
+                    };
+
                     if (firstPlay) {
                         firstPlay = false;
                         hideChildren();
@@ -87,7 +103,12 @@
                             if (curFrame < 0) curFrame += +opts.frames;
                             if (curFrame >= opts.frames) curFrame = 0;
                             if (reverse ? curFrame == opts.frames - 1 : !curFrame) loops++;
-                            if (opts.loops && loops >= opts.loops) playing = false;
+                            if (opts.loops && loops >= opts.loops){
+                                playing = false;
+                                if(opts.onEnd && isFunction(opts.onEnd)){
+                                    opts.onEnd();
+                                }
+                            }
                         }
                         wait = (wait + 1) % delay;
                         if (playing && opts.frames > 1) requestAnimationFrame(frame);
