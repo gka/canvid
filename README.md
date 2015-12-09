@@ -170,6 +170,8 @@ montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg
 
 Some users encountered problems on mobile devices with large sprites. A workaround is to split the sprite into multiple sprites.
 
+If you're experiencing problems with `montage` (e.g. "unable to read font") try updating `imagemagick` to the latest version.
+
 ## Contributors
 
 * [Gregor Aisch](http://driven-by-data.net)
