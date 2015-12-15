@@ -219,6 +219,12 @@ var canvidControl = canvid({
         
         <pre><code class="language-bash">montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg</code></pre>
         
+        <h2><a id="user-content-is-canvid-responsive" class="anchor" href="#is-canvid-responsive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Is canvid responsive?</h2>
+        <p>Yes it is, thanks to a nice little trick. Regardless of what  <code>width</code> and <code>height</code> parameters you set in the canvid constructor, you can use <code>style="width:100%"</code> on the canvas element and it will get scaled to the outer container and preserve its original aspect ratio.</p>
+        <pre><code class="language-css">.canvid {
+  width: 100%;
+}</code></pre>
+        
         <h2>
             <a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors
         </h2>
