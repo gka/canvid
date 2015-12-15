@@ -166,6 +166,16 @@ Then, use ImageMagicks [montage](http://www.imagemagick.org/script/montage.php) 
 montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg
 ```
 
+## Is canvid responsive?
+
+Yes it is, thanks to a nice little trick. Regardless of what  `width` and `height` parameters you set in the canvid constructor, you can use `style="width:100%"` on the canvas element and it will get scaled to the outer container and preserve its original aspect ratio.
+
+```css
+canvas.canvid {
+  width: 100%;
+}
+```
+
 ## Known Issues
 
 Some users encountered problems on mobile devices with large sprites. A workaround is to split the sprite into multiple sprites.
