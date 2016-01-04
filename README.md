@@ -40,7 +40,7 @@ var canvidControl = canvid({
           console.log('clip1 ended.');
           canvidControl.play('clip2');
         }},
-        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, fps: 24, }
+        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, fps: 24 }
     },
     width: 500,
     height: 400,
