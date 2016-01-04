@@ -36,10 +36,11 @@ You can use canvid.js with AMD, CommonJS and browser globals.
 var canvidControl = canvid({
     selector : '.video',
     videos: {
-        clip1: { src: 'clip1.jpg', frames: 38, cols: 6 },
-        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, loops: 3, fps: 24, onEnd: function(){
-          console.log('clip2 ended.')
-        }}
+        clip1: { src: 'clip1.jpg', frames: 38, cols: 6, loops: 1, onEnd: function(){
+          console.log('clip1 ended.');
+          canvidControl.play('clip2');
+        }},
+        clip2: { src: 'clip2.jpg', frames: 43, cols: 6, fps: 24, }
     },
     width: 500,
     height: 400,
