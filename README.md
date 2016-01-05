@@ -51,6 +51,7 @@ var canvidControl = canvid({
     }
 });
 ```
+If you want to use canvid with [React](https://facebook.github.io/react/) you can check this simple [react + canvid demo](http://codepen.io/moklick/pen/eJgbaL) to see how it works.
 
 ## Options
 
