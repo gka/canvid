@@ -22,7 +22,7 @@
             },
             _opts = merge(defaultOptions, params),
             el = typeof _opts.selector === 'string' ? document.querySelector(_opts.selector) : _opts.selector;
-        
+
         if (!el) {
             return console.warn('Error. No element found for selector', _opts.selector);
         }
@@ -84,9 +84,9 @@
                             return false;
                         }
 
-                        if(!isPlaying){
+                        if(!control.isPlaying){
                             drawFrame(frameNumber);
-                        }        
+                        }
 
                         curFrame = frameNumber;
                     };
@@ -117,7 +117,7 @@
                     function drawFrame(f) {
                         var fx = Math.floor(f % opts.cols) * frameWidth,
                             fy = Math.floor(f / opts.cols) * frameHeight;
-                        
+
                         ctx.clearRect(0, 0, _opts.width, _opts.height); // clear frame
                         ctx.drawImage(img, fx, fy, frameWidth, frameHeight, 0, 0, _opts.width, _opts.height);
                     }
@@ -140,11 +140,11 @@
         function loadImages(imageList, callback) {
             var images = {},
                 imagesToLoad = Object.keys(imageList).length;
-            
+
             if(imagesToLoad === 0) {
-                return callback('You need to define at least one video object.'); 
+                return callback('You need to define at least one video object.');
             }
-              
+
             for (var key in imageList) {
                 images[key] = new Image();
                 images[key].onload = checkCallback;
@@ -188,10 +188,10 @@
         }
 
         function reqAnimFrame() {
-            return window.requestAnimationFrame 
-                || window.webkitRequestAnimationFrame 
-                || window.mozRequestAnimationFrame 
-                || window.msRequestAnimationFrame 
+            return window.requestAnimationFrame
+                || window.webkitRequestAnimationFrame
+                || window.mozRequestAnimationFrame
+                || window.msRequestAnimationFrame
                 || function(callback) {
                     return setTimeout(callback, 1000 / 60);
                 };
@@ -209,7 +209,7 @@
         }
 
         function merge() {
-            var obj = {}, 
+            var obj = {},
                 key;
 
             for (var i = 0; i < arguments.length; i++) {
