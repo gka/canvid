@@ -84,7 +84,7 @@
                             return false;
                         }
 
-                        if(!control.isPlaying){
+                        if(!control.isPlaying()){
                             drawFrame(frameNumber);
                         }
 
