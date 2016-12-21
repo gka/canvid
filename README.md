@@ -1,4 +1,5 @@
 # canvid.js
+[![CDNJS](https://img.shields.io/cdnjs/v/canvid.svg)](https://cdnjs.com/libraries/canvid)
 
 **canvid** is a tiny dependency free library for playback of relatively short videos on canvas elements. 
 
