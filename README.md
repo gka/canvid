@@ -4,7 +4,7 @@
 **canvid** is a tiny dependency free library for playback of relatively short videos on canvas elements. 
 
 * **Why not just use HTML5 video?**  
-  Because you can't embed and autoplay HTML5 videos on iOS! Yeah, [that sucks](https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html#//apple_ref/doc/uid/TP40009523-CH5-SW4).
+  Because you ~~can't~~ until [Oct 2016](https://webkit.org/blog/6784/new-video-policies-for-ios/) you could not embed and autoplay HTML5 videos on iOS! Yeah, [that sucked](https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html#//apple_ref/doc/uid/TP40009523-CH5-SW4).
 
 * **Why is this better than using an animated GIF?**  
   Videos look kind of gross when converted to animated GIFs because of the colors sampling. Also the file size of video GIFs can get pretty huge. GIF is just not made for videos. JPG does a much better job of compressing video frames. Also, animated GIFs don't give you any playback controls. You can't pause a GIF or delay it's playback. With canvid you can do that.
