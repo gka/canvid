@@ -54,7 +54,11 @@
                         loops = 0,
                         delay = 60 / curFps;
 
-                    requestAnimationFrame(frame);
+                    images[key].loadPromise.then(function () {
+                      frameWidth = img.width / opts.cols,
+                      frameHeight = img.height / Math.ceil(opts.frames / opts.cols);
+                      requestAnimationFrame(frame);
+                    });
 
                     control.resume = function() {
                         playing = true;
@@ -147,17 +151,19 @@
 
             for (var key in imageList) {
                 images[key] = new Image();
-                images[key].onload = checkCallback;
-                images[key].onerror = callback;
+                images[key].loadPromise = new Promise( function (resolve, reject) {
+                  images[key].onload = function () {
+                    resolve();
+                  };
+                  images[key].onerror = function (error) {
+                    reject(error);
+                  };
+                })
                 images[key].src = imageList[key].src;
             }
-
-            function checkCallback() {
-                imagesToLoad--;
-                if (imagesToLoad === 0) {
-                    callback(null, images);
-                }
-            }
+            setTimeout(function () {
+              callback(null, images);
+            }, 0);
         }
 
         function initCanvas() {
