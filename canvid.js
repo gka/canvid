@@ -15,6 +15,7 @@
                 selector: '.canvid-wrapper'
             },
             firstPlay = true,
+            lastWait = 0,
             control = {
                 play: function() {
                     console.log('Cannot play before images are loaded');
@@ -97,7 +98,7 @@
                     }
 
                     function frame() {
-                        if (!wait) {
+                        if (lastWait > wait) {
                             drawFrame(curFrame);
                             curFrame = (+curFrame + (reverse ? -1 : 1));
                             if (curFrame < 0) curFrame += +opts.frames;
@@ -110,6 +111,7 @@
                                 }
                             }
                         }
+                        lastWait = wait;
                         wait = (wait + 1) % delay;
                         if (playing && opts.frames > 1) requestAnimationFrame(frame);
                     }
